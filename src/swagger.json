@@ -49,6 +49,7 @@
                     {
                       "id": "acn834n-ajcan38-anccno3-cafsfs",
                       "name": "Aristóteles Oswald",
+                      "email": "aristoteles.oswald@example.com",
                       "admin": true,
                       "created_at": "2022-12-25T11:15:00.2134Z",
                       "updated_at": "2022-12-25T11:15:00.2134Z"
@@ -78,6 +79,124 @@
                   },
                   "example": {
                     "error": "You need be an administrator to list all users"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Users"],
+        "summary": "Create an user",
+        "description": "Route used to create an user in the application",
+        "requestBody": {
+          "summary": "The required to make a request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string",
+                    "format": "password"
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "created_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "updated_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  }
+                },
+                "required": [
+                  "name",
+                  "email"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Response in successful cases",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                       "format": "uuid"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "password": {
+                      "type": "string",
+                      "format": "password"
+                    },
+                    "email": {
+                      "type": "string",
+                      "format": "email"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "updated_at": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  }
+                },
+                "examples": {
+                  "user": {
+                    "summary": "An example of an user",
+                    "description": "Properties returned for um object representing an user in successful requests",
+                    "value": {
+                      "id": "acn834n-ajcan38-anccno3-cafsfs",
+                      "name": "Aristóteles Oswald",
+                      "email": "aristoteles.oswald@example.com",
+                      "created_at": "2022-12-25T11:15:00.2134Z",
+                      "updated_at": "2022-12-25T11:15:00.2134Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "When an already in use email is provided",
+            "content": {
+              "application/jon": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "error": {
+                    "summary": "An example of error",
+                    "value": {
+                      "error": "Email provided is already in use"
+                    }
                   }
                 }
               }
