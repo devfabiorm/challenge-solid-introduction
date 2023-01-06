@@ -204,6 +204,149 @@
           }
         }
       }
+    },
+    "/users/{user_id}": {
+      "summary": "A route to do operation on users",
+      "description": "Through of this route you can create, edit or search for an specific or all users",
+      "get": {
+        "tags": ["Users"],
+        "summary": "A route that retrieves an user by id",
+        "description": "By passing an user id in the route param you can retrieve they data",
+        "responses": {
+          "200": {
+            "description": "Response with user data required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string",
+                      "format": "email"
+                    },
+                    "admin": {
+                      "type": "boolean"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "updated_at": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  },
+                  "example": {
+                    "id": "acn834n-ajcan38-anccno3-cafsfs",
+                    "name":"Aristóteles Oswald",
+                    "email": "aristoteles.oswald@example.com",
+                    "admim": true,
+                    "created_at": "2022-12-25T11:15:00.2134Z",
+                    "updated_at": "2022-12-25T11:15:00.2134Z"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "An error received in caso something goes wrong",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "example": {
+                    "error": "User not found"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{user_id}/admin": {
+      "summary": "A route to turn a normal user into admin",
+      "description": "By passing throughout the param in route an user id, you can turn they into admin",
+      "patch": {
+        "tags": ["Users"],
+        "summary": "A route to turn a normal user into admin",
+        "description": "Pass a user id so they can become administrator",
+        "responses": {
+          "200": {
+            "description": "A response when request is successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object", 
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string",
+                      "format": "email"
+                    },
+                    "admin": {
+                      "type": "boolean"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "updated_at": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  },
+                  "example": {
+                    "id": "acn834n-ajcan38-anccno3-cafsfs",
+                    "name":"Aristóteles Oswald",
+                    "email": "aristoteles.oswald@example.com",
+                    "admim": true,
+                    "created_at": "2022-12-25T11:15:00.2134Z",
+                    "updated_at": "2022-12-25T11:15:00.2134Z"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "An error received in caso something goes wrong",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "example": {
+                    "error": "User not found"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
+      
