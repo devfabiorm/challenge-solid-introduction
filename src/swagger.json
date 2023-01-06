@@ -210,6 +210,17 @@
       "description": "Through of this route you can create, edit or search for an specific or all users",
       "get": {
         "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "description": "User id in UUID format",
+            "required": true,
+            "Schema": {
+              "type": "string"
+            }
+          }
+        ],
         "summary": "A route that retrieves an user by id",
         "description": "By passing an user id in the route param you can retrieve they data",
         "responses": {
@@ -281,6 +292,17 @@
       "description": "By passing throughout the param in route an user id, you can turn they into admin",
       "patch": {
         "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "description": "User Id in UUID format",
+            "required": true,
+            "Schema": {
+              "type": "string"
+            }
+          }
+        ],
         "summary": "A route to turn a normal user into admin",
         "description": "Pass a user id so they can become administrator",
         "responses": {
